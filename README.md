@@ -1,2 +1,2 @@
-# API_excercises
+# API_exercises
 API_zajęcia SDA

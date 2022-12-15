@@ -371,7 +371,7 @@ const ul = document.createElement("ul");
 // textContent: `User id: ${el.userId}, Todo id: ${el.id}, ${el.title}
 // return li
 
-const dataLi = data.map( (el) => {
+const dataElements = data.map( (el) => {
     const li = document.createElement("li");
    
     if (el.completed) li.style.color = "green";
@@ -382,9 +382,8 @@ const dataLi = data.map( (el) => {
 });
 
 // 5. Za pomocą pętli forEach podepnij wszystkie li do listy <ul> (pkt 3)
-dataLi.forEach((el) => {
-    ul.appendChild(el);
-    return ul;
+dataElements.forEach((dataElement) => {
+    ul.appendChild(dataElement);
 });
 // 6. Podepnij <ul> (pkt 3) do content div.
 

@@ -322,7 +322,7 @@ const renderCalculator = () => {
 //     console.log(event);
 //   });
 form.addEventListener("submit", (event) => {
-  event.preventDeafult();
+  event.preventDefault();
 // W EL:
 //   // 2. Ściągnij wartości z obu inputów i selecta.
 
@@ -352,24 +352,20 @@ spans[2].addEventListener("click", () => {
 
 // "https://jsonplaceholder.typicode.com/todos/"
 // 1. Stwórz funckję fetchAndDisplayJSON (async)
-// const spans = document.querySelectorAll("span")
-// const divContent = document.querySelector("#content");
+
+//  Za pomocą metody .map(), przejeżdżając po otrzymanych, stwórz listę z elementami li (w środku funkcji callbackowej mapa musisz stworzyć element <li>, w zależności od pola completed ustawić kolor na zielony lub czerwony oraz ustawić textContent w którym ma się znaleźć User id, id, i title, na końcu funkcji callbackowej zwróć skonfigurowany element li)
+
 const fetchAndDisplayJSON = () => {
     
-// W funkcji:
-// 2. Wykonaj fetcha i rozpakuj dane (fetch, .json())
+
 const data = [];
 fetch('https://jsonplaceholder.typicode.com/todos/')
 .then(response => response.json())
-.then((data) => (data));
-// 3. Stwórz element <ul>
 
+.then((data) => {
 const ul = document.createElement("ul");
 
-// 4. Za pomocą metody .map(), przejeżdżając po otrzymanych, stwórz listę z elementami li (w środku funkcji callbackowej mapa musisz stworzyć element <li>, w zależności od pola completed ustawić kolor na zielony lub czerwony oraz ustawić textContent w którym ma się znaleźć User id, id, i title, na końcu funkcji callbackowej zwróć skonfigurowany element li)
-// element.style.color = 'red' / element.style.color = 'green'
-// textContent: `User id: ${el.userId}, Todo id: ${el.id}, ${el.title}
-// return li
+
 
 const dataElements = data.map( (el) => {
     const li = document.createElement("li");
@@ -381,24 +377,19 @@ const dataElements = data.map( (el) => {
     return li;
 });
 
-// 5. Za pomocą pętli forEach podepnij wszystkie li do listy <ul> (pkt 3)
 dataElements.forEach((dataElement) => {
     ul.appendChild(dataElement);
 });
-// 6. Podepnij <ul> (pkt 3) do content div.
+
 
 divContent.appendChild(ul);
+});
 }
-// (koniec funkcji)
-// 7. Stwórz nową podstronę tak jak przed chwilą (homeSpans[2].addEventListener('click'...), w środku event listenera wywołaj fetchAndDisplayJSON
-// const liList = data.map((el) => {
-//   // const li = ...
-//   // if(el.completed) li.style.color = 'green'
-//   // else li.style.color = 'red'
-//   // li.textContent
-//   // return li
-// });
+
 spans[1].addEventListener("click", () => {
 divContent.innerHTML = "";
 fetchAndDisplayJSON()
 });
+
+
+
